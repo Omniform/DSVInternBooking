@@ -1,0 +1,33 @@
+﻿@page
+@model MyApp.Namespace.CountrySelectModel
+@{
+}
+
+<body>
+    <table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                Country
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Countries != null)
+        {
+            foreach (string country in Model.Countries)
+            {
+                <form method="post">
+                <tr>
+                    <td>
+                        <input type="submit" asp-page-handler="Post" value="@country"/>
+                        @country
+                    </td>
+                </tr>
+                </form>
+            }
+        }
+    </tbody>
+
+    </table>
+</body>

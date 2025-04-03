@@ -1,0 +1,45 @@
+﻿@page
+@model MyApp.Namespace.GetAllRoomsModel
+@{
+}
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+    <tr>
+        <th>
+            Country
+        </th>
+        <th>
+            ID
+        </th>
+        <th>
+            Capacity
+        </th>
+        <th>
+            Equipment
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+     @if (@Model.m_rooms != null)
+        {
+            foreach (var room in Model.m_rooms)
+            {
+                <tr>
+                    <td>
+                        @room.Country
+                    </td>
+                    <td>
+                        @room.ID
+                    </td>
+                    <td>
+                        @room.Capacity
+                    </td>
+                    <td>
+                        @room.Equipment
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
