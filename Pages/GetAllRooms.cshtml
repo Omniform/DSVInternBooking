@@ -21,9 +21,9 @@
     </tr>
     </thead>
     <tbody>
-     @if (@Model.m_rooms != null)
+     @if (@Model.m_selectedCountryRooms != null)
         {
-            foreach (var room in Model.m_rooms)
+            foreach (var room in Model.m_selectedCountryRooms)
             {
                 <tr>
                     <td>
@@ -36,7 +36,7 @@
                         @room.Capacity
                     </td>
                     <td>
-                        @room.Equipment
+                        @room.EquipmentToString()
                     </td>
                 </tr>
             }

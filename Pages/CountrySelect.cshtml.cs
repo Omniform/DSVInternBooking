@@ -14,16 +14,9 @@ namespace MyApp.Namespace
             "Sverige",
             "Nederlandene"
         };
-
-        public string m_country;
         
         public void OnGet()
         {
-        }
-
-        public void OnPost(string country)
-        {
-
         }
     }
 }

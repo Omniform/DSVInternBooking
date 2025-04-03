@@ -17,14 +17,11 @@
         {
             foreach (string country in Model.Countries)
             {
-                <form method="post">
                 <tr>
                     <td>
-                        <input type="submit" asp-page-handler="Post" value="@country"/>
-                        @country
+                        <a class="btn" style="width: 100%; height: 100%;" href="GetAllRooms?country=@country">@country</a>
                     </td>
                 </tr>
-                </form>
             }
         }
     </tbody>
