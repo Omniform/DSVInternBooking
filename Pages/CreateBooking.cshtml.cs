@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MyApp.Namespace
+namespace DSVInternBooking.Pages
 {
-    public class bookingModel : PageModel
+    public class CreateBookingModel : PageModel
     {
         public void OnGet()
         {

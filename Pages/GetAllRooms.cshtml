@@ -18,6 +18,9 @@
         <th>
             Equipment
         </th>
+        <th>
+            
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -38,8 +41,18 @@
                     <td>
                         @room.EquipmentToString()
                     </td>
+                    <td>
+                        <button type="button">
+                            <div class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/CreateBooking">Book</a>
+                            </div>
+                        </button>
+                    </td>
                 </tr>
             }
         }
+
+
     </tbody>
+
 </table>
