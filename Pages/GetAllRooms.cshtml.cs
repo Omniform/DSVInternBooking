@@ -9,6 +9,11 @@ namespace MyApp.Namespace
         private RoomService m_roomService = new RoomService();
         public List<Room> m_selectedCountryRooms = new List<Room>();
 
+        private Filtering filtering = new Filtering();
+
+        [BindProperty]
+        public string SearchString { get; set; }
+
         public GetAllRoomsModel(RoomService roomService)
         => m_roomService = roomService;
 
@@ -27,6 +32,15 @@ namespace MyApp.Namespace
                     m_selectedCountryRooms.Add(room);
                 }
             }
+        }
+
+        public IActionResult OnPostNameSearch()
+        {
+            if (SearchString != null)
+            {
+                m_selectedCountryRooms = filtering.FilterList(m_selectedCountryRooms, SearchString);
+            }
+            return Page();
         }
     }
 }

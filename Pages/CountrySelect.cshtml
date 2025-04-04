@@ -4,6 +4,11 @@
 }
 
 <body>
+    <form method="post">
+        <label for="SearchString">Filter</label>
+        <input asp-for="SearchString" class="form-control"/>
+        <input type="submit" asp-page-handler="NameSearch" class="btn btn-primary"/>
+    </form>
     <table class="table table-bordered table-hover table-striped">
     <thead>
         <tr>

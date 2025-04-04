@@ -9,6 +9,7 @@ namespace DSVInternBooking
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddSingleton<RoomService, RoomService>();
+            builder.Services.AddSingleton<Filtering, Filtering>();
 
             var app = builder.Build();
 
