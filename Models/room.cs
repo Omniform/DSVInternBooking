@@ -10,6 +10,10 @@ public class Room
     public Room(in string country, in int id, in int capacity, in List<string> equipment)
     => (Country, ID, Capacity, Equipment) = (country, id, capacity, equipment);
 
+    public Room()
+    {
+    }
+
     public string EquipmentToString()
     {
         string equipment = "";

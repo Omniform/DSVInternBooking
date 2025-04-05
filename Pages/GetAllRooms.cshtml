@@ -2,11 +2,17 @@
 @model MyApp.Namespace.GetAllRoomsModel
 @{
 }
+@functions {
+    public string Country => (string)ViewContext.HttpContext.Request.Query["country"];
+}
 
-<form method="post">
+<form method="post" asp-page-handler="NameSearch">
+    <input type="hidden" asp-for="Country" />
+    
     <label for="SearchString">Filter</label>
-    <input asp-for="SearchString" class="form-control"/>
-    <input type="submit" asp-page-handler="NameSearch" class="btn btn-primary"/>
+    <input asp-for="SearchString" class="form-control" />
+    
+    <input type="submit" class="btn btn-primary" />
 </form>
 
 <table class="table table-bordered table-hover table-striped">
@@ -32,7 +38,7 @@
     <tbody>
      @if (@Model.m_selectedCountryRooms != null)
         {
-            foreach (var room in Model.m_selectedCountryRooms)
+            foreach (Room room in Model.m_selectedCountryRooms)
             {
                 <tr>
                     <td>
@@ -48,11 +54,26 @@
                         @room.EquipmentToString()
                     </td>
                     <td>
-                        <button type="button">
+                        @if (Model.bookingService.Contains(room))
+                        {
+                            Model.StyleButton = "red";
+                            Model.RedirectBookingPage = Page().ToString();
+                        }
+                        else
+                        {
+                            Model.StyleButton = "green";
+                            Model.RedirectBookingPage = "/CreateBooking";
+                        }
+                        @* <button type="button" style="background-color: @Model.StyleButton;">
                             <div class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/CreateBooking">Book</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page=@Model.RedirectBookingPage>Book</a>
                             </div>
-                        </button>
+                        </button> *@
+                        <form method="get" asp-page="@Model.RedirectBookingPage">
+                            <input type="hidden" name="Country" value="@room.Country" />
+                            <input type="hidden" name="ID" value="@room.ID" />
+                            <button type="submit" class="btn btn-primary" style="background-color: @Model.StyleButton;">Book</button>
+                        </form>
                     </td>
                 </tr>
             }

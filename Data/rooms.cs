@@ -13,8 +13,9 @@ public class Rooms
     {
         new("Danmark", 1, 15, new List<string>{"Projekter", "Whiteboard"}),
         new("Danmark", 2, 20, new List<string>{"Whiteboard"}),
-        new("Tyskland", 4, 20, new List<string>{"Whiteboard"}),
-        new("Nederlandene", 2, 20, new List<string>{"Whiteboard"})
+        new("Tyskland", 1, 20, new List<string>{"Whiteboard"}),
+        new("Nederlandene", 1, 20, new List<string>{"Whiteboard"}),
+        new("Nederlandene", 2, 20, new List<string>{"Whiteboard, Projekter"})
     };
 
     public Rooms()
