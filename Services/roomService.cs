@@ -13,4 +13,16 @@ public class RoomService
     {
         return RoomServices;
     }
+
+    public Room GetRoomByIDAndCountry(int id, string country)
+    {
+        foreach (Room room in RoomServices)
+        {
+            if (room.ID == id && room.Country == country)
+            {
+                return room;
+            }
+        }
+        return RoomServices.ElementAt(0);
+    }
 }

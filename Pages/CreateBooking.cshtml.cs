@@ -1,5 +1,6 @@
 using DSVInternBooking.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DSVInternBooking.Pages
@@ -21,10 +22,12 @@ namespace DSVInternBooking.Pages
         [BindProperty]
         public Room SelectedRoom { get; set; }
 
-        public BookingService bookingService = new BookingService();
+        // public BookingService bookingService = new BookingService();
 
-        public CreateBookingModel(RoomService roomService)
-        => m_roomService = roomService;
+        private readonly BookingService m_bookingService;
+
+        public CreateBookingModel(RoomService roomService, BookingService bookingService)
+        => (m_roomService, m_bookingService) = (roomService, bookingService);
 
         public void OnGet()
         {
@@ -42,7 +45,16 @@ namespace DSVInternBooking.Pages
 
         public IActionResult OnPostBook()
         {
-            bookingService.AddBooking(Booking);
+            foreach (Room room in m_roomService.GetRooms())
+            {
+                if (room.ID == Booking.Room.ID && room.Country == Booking.Room.Country)
+                {
+                    Booking.Room = room;
+                    break;
+                }
+            }
+
+            m_bookingService.AddBooking(Booking);
 
             return RedirectToPage("MyBookings");
         }

@@ -21,20 +21,19 @@ namespace MyApp.Namespace
 
         private Filtering filtering = new Filtering();
 
-        public BookingService bookingService { get; set; }
+        public BookingService bookingService;
 
         [BindProperty]
         public string SearchString { get; set; }
 
-        public GetAllRoomsModel(RoomService roomService)
-        => m_roomService = roomService;
+        public GetAllRoomsModel(RoomService roomService, BookingService bookingService)
+        => (m_roomService, this.bookingService) = (roomService, bookingService);
 
         public string Parameter { get; set; }
 
 
         public void OnGet()
         {
-            bookingService = new BookingService();
             m_selectedCountryRooms = m_roomService.GetRooms().Where(room => room.Country == Country).ToList();
         }
 
