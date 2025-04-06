@@ -35,27 +35,21 @@
   </thead>
   <tbody>
     <tr>
-        @* <td>
-          <input type="datetime-local" />
+      <form method="post">
+        <td>
+          <input type="datetime-local" asp-for="Booking.DateTimeBegin" />
         </td>
         <td>
-          <input type="datetime-local" />
+          <input type="datetime-local" asp-for="Booking.DateTimeEnd" />
         </td>
-        <td> *@
-          <form method="post">
-            <td>
-              <input type="datetime-local" asp-for="Booking.DateTimeBegin" />
-            </td>
-            <td>
-              <input type="datetime-local" asp-for="Booking.DateTimeEnd" />
-            </td>
-            <input type="hidden" asp-for="Booking.Room.ID" />
-            <input type="hidden" asp-for="Booking.Room.Country" />
-            <input type="hidden" asp-for="Booking.Room.Capacity" />
-            <input type="hidden" asp-for="Booking.Room.Equipment" />
-            <button type="submit" class="btn btn-primary" asp-page-handler="Book">Confirm</button>
-          </form>
+        <td>
+          <input type="hidden" asp-for="Booking.Room.ID" />
+          <input type="hidden" asp-for="Booking.Room.Country" />
+          <input type="hidden" asp-for="Booking.Room.Capacity" />
+          <input type="hidden" asp-for="Booking.Room.Equipment" />
+          <button type="submit" class="btn btn-primary" asp-page-handler="Book">Confirm</button>
         </td>
-      </tr>
+      </form>
+    </tr>
   </tbody>
 </table>
